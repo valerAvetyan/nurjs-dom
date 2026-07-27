@@ -27,19 +27,39 @@ Include the script in your HTML page:
 Then use the `N()` function to select and build elements:
 
 ```javascript
-// Create a heading inside the body
-N('body').h1('Hello World!', 'main-title');
-
-// Create a styled paragraph
-N('body').p('Welcome to NurJS', 'intro-text');
-
-// Add a hover animation to a button
-N('#myButton').hoverMove('15px', '0.2s');
-
-// Handle a click event
-N('#myButton').click(() => {
-  console.log('Button clicked!');
+// Create multiple elements at once
+N('body').createMany({
+  tag: { div: 5 },
+  className: 'card',
+  style: 'padding:10px; margin:5px;',
+  text: 'Card item'
 });
+
+// Load a custom font dynamically
+N().fontFace('Poppins', 'https://fonts.gstatic.com/s/poppins/v20/poppins.woff2');
+
+// Build a styled image with alt text, id and class in one call
+N('body').img('logo.png', 'Site Logo', 'logo-img', 'rounded-logo', 'width:120px;');
+
+// Smooth hover-move animation on any element
+N('#card1').hoverMove('20px', '0.25s');
+
+// Play a sound effect on hover
+N('#card1').hoverSound('click-sound.mp3');
+
+// Show an animated error/notification panel
+N('#errorBox').showErrorPanel(3000, 'block');
+
+// Generate custom icons with size and color in one line
+N.icons({
+  home: ['24px', '#4CAF50'],
+  settings: ['20px', '#333']
+});
+
+// Style text in separate clean calls
+N('#title').setFont('Poppins', '28px', 'bold');
+N('#title').setColor('#222');
+N('#title').centerT();
 ```
 
 ## Why NurJS?
