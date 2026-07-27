@@ -1,17 +1,3 @@
-// NurJS Library of JavaScript Language
-
-// Details of NurJS
-	// NurJS VERSION => 1.0
-	// NurJS TOOL => HTML elements and their animation properties
-	// NurJS F.C. => NJ-25400554
-	// CREATOR => NurJS
-	// !!! Submit your modified version to us and get permission to publish it as your personal NurJS tool.
-	// EMAIL : nurjs.language@gmail.com
-
-
-
-// function for create any HTML Elements
-
 function N(selector){
 
 	var tag = 
@@ -137,10 +123,6 @@ function N(selector){
 			tag.element.appendChild(elem_create);
 		},
 		
-
-
-		// N('body').h(3, 'Заголовок', 'id:title', 'class:title');
-		// test script
 
 		h: (level, text, id, classname) => {
 			let elem_create = document.createElement(`h${level}`);
@@ -397,27 +379,27 @@ function N(selector){
 
 
 
-		// animations, events, func codes
-		hoverMove: function (distance = "10px", duration = "0.1s") { // Уменьшил время (было 0.3s)
+	
+		hoverMove: function (distance = "10px", duration = "0.1s") { 
 			if (!tag.element) {
 				console.warn(`⚠️ Элемент '${selector}' не найден.`);
 				return;
 			}
 		
-			tag.element.style.willChange = "transform"; // Оптимизация рендеринга
-			tag.element.style.transition = duration; // Резкое движение
+			tag.element.style.willChange = "transform"; 
+			tag.element.style.transition = duration; 
 		
 			tag.element.addEventListener("mouseover", (event) => {
 				event.stopPropagation();
 				setTimeout(() => {
-					tag.element.style.transform = `translateX(${distance})`; // Двигаем резко
-				}, 10); // Небольшая задержка, чтобы браузер успел применить transition
+					tag.element.style.transform = `translateX(${distance})`; 
+				}, 10); 
 			});
 		
 			tag.element.addEventListener("mouseout", (event) => {
 				event.stopPropagation();
 				setTimeout(() => {
-					tag.element.style.transform = "translateX(0)"; // Возвращаем резко
+					tag.element.style.transform = "translateX(0)";
 				}, 10);
 			});
 		
@@ -431,7 +413,7 @@ function N(selector){
 			}
 		
 			let audio = new Audio(soundURL);
-			let isHovered = false; // Чтобы звук играл 1 раз за наведение
+			let isHovered = false; 
 		
 			tag.element.addEventListener("mouseover", (event) => {
 				event.stopPropagation();
@@ -444,7 +426,7 @@ function N(selector){
 		
 			tag.element.addEventListener("mouseout", (event) => {
 				event.stopPropagation();
-				isHovered = false; // Сбрасываем флаг при уходе мыши
+				isHovered = false;
 			});
 		
 			return tag;
@@ -456,26 +438,25 @@ function N(selector){
 				return;
 			}
 		
-			// Начальное состояние: невидимый и сжатый
 			tag.element.style.opacity = "0";
 			tag.element.style.display = display;
 			tag.element.style.transform = "scale(0.1) skewX(-5deg)";
 			tag.element.style.transition = "transform 0.4s ease-out, opacity 0.4s ease-out";
 		
-			// Показываем с анимацией
+		
 			setTimeout(() => {
 				tag.element.style.opacity = "1";
 				tag.element.style.transform = "scale(1) skewX(0)";
 			}, 50);
 		
-			// Убираем ошибку через X секунд
+	
 			setTimeout(() => {
 				tag.element.style.opacity = "0";
 				tag.element.style.transform = "scale(0.8) skewX(5deg)";
 		
 				setTimeout(() => {
 					tag.element.style.display = "none";
-				}, 400); // Ждём завершения анимации перед скрытием
+				}, 400);
 			}, duration);
 		},
 
@@ -516,8 +497,8 @@ function nur(selector) {
 
 			for (var iconName in iconOptions) {
 				var iconParams = iconOptions[iconName];
-				var iconSize = iconParams[0] || '16px'; // Если размер не указан, используем '16px'
-				var iconColor = iconParams[1] || 'black'; // Если цвет не указан, используем 'black'
+				var iconSize = iconParams[0] || '16px'; 
+				var iconColor = iconParams[1] || 'black';
 
 				var iconElement = document.createElement('i');
 				iconElement.className = 'icon-' + iconName;
@@ -535,7 +516,7 @@ function nur(selector) {
 }
 
 N.icons = function(iconOptions) {
-	var nInstance = N(); // Создаем новый экземпляр N
-	return nInstance.icon(iconOptions); // Вызываем метод icon на новом экземпляре N
+	var nInstance = N();
+	return nInstance.icon(iconOptions); 
 };
 
